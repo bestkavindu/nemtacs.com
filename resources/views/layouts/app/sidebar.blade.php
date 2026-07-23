@@ -15,6 +15,11 @@
                     <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </flux:sidebar.item>
+                    @role('admin')
+                        <flux:sidebar.item icon="briefcase" :href="route('admin.projects.index')" :current="request()->routeIs('admin.projects.*')" wire:navigate>
+                            {{ __('Projects') }}
+                        </flux:sidebar.item>
+                    @endrole
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 
