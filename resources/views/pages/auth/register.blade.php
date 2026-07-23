@@ -19,6 +19,17 @@
                 :placeholder="__('Full name')"
             />
 
+            <!-- Blog Name -->
+            <flux:input
+                name="blog_name"
+                :label="__('Blog name')"
+                :value="old('blog_name')"
+                type="text"
+                required
+                autocomplete="off"
+                :placeholder="__('My awesome blog')"
+            />
+
             <!-- Email Address -->
             <flux:input
                 name="email"
