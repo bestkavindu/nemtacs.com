@@ -291,6 +291,9 @@
                                 <div style="font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8b98a2;text-transform:uppercase;margin-bottom:8px"> {{$p->category ?  $p->category : '' }} | {{ $p->location }}</div>
                             @endif
                             <h3 style="font:600 21px/1.25 'Space Grotesk',sans-serif;color:#14202b;margin:0">{{ $p->title }}</h3>
+                            @if ($p->description)
+                                <p style="font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:#5a6772;margin:10px 0 0">{{ \Illuminate\Support\Str::limit(strip_tags($p->description), 120) }}</p>
+                            @endif
                         </a>
                     @endforeach
                 </div>
