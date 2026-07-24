@@ -93,10 +93,10 @@
             <div style="display:flex;align-items:center;gap:32px">
                 <nav class="desktop-nav" style="display:flex;gap:26px;font:500 15px 'IBM Plex Sans',sans-serif">
                     <a href="#home" style="color:#e1141c">Home</a>
-                    <a href="#about" class="navlink">About</a>
-                    <a href="#services" class="navlink">Services</a>
-                    <a href="#projects" class="navlink">Projects</a>
-                    <a href="#brands" class="navlink">Brands</a>
+                    <a href="#about" class="navlink" wire:navigate>About</a>
+                    <a href="#services" wire:navigate class="navlink">Services</a>
+                    <a href="/projects" wire:navigate class="navlink">Projects</a>
+                    <a href="#brands" wire:navigate class="navlink">Brands</a>
                 </nav>
                 <a href="#contact" class="btn-red" style="padding:11px 22px;border-radius:5px;font:600 14px 'IBM Plex Sans',sans-serif">Contact Us</a>
             </div>
@@ -256,7 +256,7 @@
                     <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#e1141c;display:flex;align-items:center;gap:10px"><span style="width:26px;height:2px;background:#e1141c"></span>Selected work</div>
                     <h2 style="font:600 40px/1.1 'Space Grotesk',sans-serif;letter-spacing:-.02em;color:#14202b;margin:18px 0 0;text-wrap:balance">Projects delivered across Sri Lanka.</h2>
                 </div>
-                <a href="#contact" class="btn-outline" style="font:600 14px 'IBM Plex Sans',sans-serif;padding:12px 22px;border-radius:5px;white-space:nowrap">Discuss your project →</a>
+                <a href="{{ route('projects.index') }}" class="btn-outline" style="font:600 14px 'IBM Plex Sans',sans-serif;padding:12px 22px;border-radius:5px;white-space:nowrap">View all projects →</a>
             </div>
             @php
                 $projects = [
