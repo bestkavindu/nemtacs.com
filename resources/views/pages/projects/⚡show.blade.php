@@ -89,7 +89,7 @@ new #[Layout('components.layouts.site')] class extends Component {
             @if ($project->description)
                 <div style="max-width:820px">
                     <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#e1141c;margin-bottom:16px">Project overview</div>
-                    <div style="font:400 17.5px/1.8 'IBM Plex Sans',sans-serif;color:#3a4650;white-space:pre-line">{{ $project->description }}</div>
+                    <div class="trix-content" style="font:400 17.5px/1.8 'IBM Plex Sans',sans-serif;color:#3a4650">{!! $project->description !!}</div>
                 </div>
             @endif
 

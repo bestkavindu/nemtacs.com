@@ -49,6 +49,17 @@
             .grid-3{grid-template-columns:1fr !important}
             h1{font-size:40px !important}
         }
+
+        /* rich-text (Trix) output */
+        .trix-content h1{font:600 26px/1.25 'Space Grotesk',sans-serif;color:#14202b;margin:0 0 14px}
+        .trix-content p{margin:0 0 16px}
+        .trix-content ul,.trix-content ol{margin:0 0 16px;padding-left:22px}
+        .trix-content ul{list-style:disc}
+        .trix-content ol{list-style:decimal}
+        .trix-content li{margin:0 0 6px}
+        .trix-content a{color:#1b63a8;text-decoration:underline}
+        .trix-content strong{font-weight:600}
+        .trix-content blockquote{margin:0 0 16px;padding-left:16px;border-left:3px solid #e1141c;color:#5a6772}
     </style>
     @stack('styles')
 </head>

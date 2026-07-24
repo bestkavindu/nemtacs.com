@@ -75,7 +75,7 @@ new #[Title('Create project')] class extends Component {
                 <flux:input wire:model="category" :label="__('Category')" type="text" />
             </div>
 
-            <flux:textarea wire:model="description" :label="__('Description')" rows="4" />
+            <x-rich-text-editor model="description" :label="__('Description')" :placeholder="__('Describe the project…')" />
 
             <flux:input wire:model="location" :label="__('Location')" type="text" />
 
