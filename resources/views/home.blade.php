@@ -40,6 +40,13 @@
         .util-social:hover{background:#fff;color:#e1141c}
         .svc-card{transition:border-color .25s,box-shadow .25s,transform .25s}
         .svc-card:hover{border-color:#cdd6dd;box-shadow:0 14px 30px rgba(14,26,36,.10);transform:translateY(-3px)}
+        .prj-card{color:inherit;transition:transform .25s}
+        .prj-card:hover{transform:translateY(-4px)}
+        .prj-card:hover h3{color:#e1141c}
+        .prj-card .imgwrap{transition:box-shadow .3s}
+        .prj-card:hover .imgwrap{box-shadow:0 16px 34px rgba(14,26,36,.16)}
+        .prj-card img.cover{transition:transform .55s cubic-bezier(.22,.61,.36,1)}
+        .prj-card:hover img.cover{transform:scale(1.06)}
         .svc-link{transition:gap .2s,color .2s}.svc-link:hover{gap:10px;color:#c10e15}
         .hero-ctrl{transition:background .2s}.hero-ctrl:hover{background:rgba(255,255,255,.22)}
         .footer-link:hover{color:#ff5960}
@@ -259,21 +266,39 @@
                 <a href="{{ route('projects.index') }}" class="btn-outline" style="font:600 14px 'IBM Plex Sans',sans-serif;padding:12px 22px;border-radius:5px;white-space:nowrap">View all projects →</a>
             </div>
             @php
-                $projects = [
-                    ['https://images.unsplash.com/photo-1576446470246-499c738d1c8e?auto=format&fit=crop&w=1200&q=80','Switchboards','Industrial · Colombo','4000A Main Distribution Board'],
-                    ['https://images.unsplash.com/photo-1717386255777-ce60792a2a56?auto=format&fit=crop&w=1200&q=80','Automation','Manufacturing · Gampaha','PLC Automation Upgrade'],
-                    ['https://images.unsplash.com/photo-1558054665-fbe00cd7d920?auto=format&fit=crop&w=1200&q=80','Generators','Commercial · Kandy','Standby Generator Installation'],
-                ];
+                $projects = \App\Models\Project::query()
+                    ->where('active', true)
+                    ->where('is_featured', true)
+                    ->latest()
+                    ->take(3)
+                    ->get();
             @endphp
-            <div class="grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px">
-                @foreach ($projects as $p)
-                    <div>
-                        <div style="position:relative;height:250px;border-radius:11px;overflow:hidden;margin-bottom:18px"><img class="cover" style="position:absolute;inset:0" src="{{ $p[0] }}" alt="{{ $p[3] }}" loading="lazy"><span style="position:absolute;top:14px;left:14px;background:rgba(20,32,43,.85);color:#fff;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:6px 10px;border-radius:4px;text-transform:uppercase">{{ $p[1] }}</span></div>
-                        <div style="font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8b98a2;text-transform:uppercase;margin-bottom:8px">{{ $p[2] }}</div>
-                        <h3 style="font:600 21px/1.25 'Space Grotesk',sans-serif;color:#14202b;margin:0">{{ $p[3] }}</h3>
-                    </div>
-                @endforeach
-            </div>
+            @if ($projects->isNotEmpty())
+                <div class="grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px">
+                    @foreach ($projects as $p)
+                        <a href="{{ route('projects.show', $p) }}" class="prj-card" style="display:block;color:inherit">
+                            <div class="imgwrap" style="position:relative;height:250px;border-radius:11px;overflow:hidden;margin-bottom:18px;background:#f5f7f9">
+                                @if ($p->image)
+                                    <img class="cover" style="position:absolute;inset:0" src="{{ \Storage::disk('public')->url($p->image) }}" alt="{{ $p->title }}" loading="lazy">
+                                @else
+                                    <div class="ph" style="position:absolute;inset:0"><span>Nemt Power project</span></div>
+                                @endif
+                                @if ($p->category)
+                                    <span style="position:absolute;top:14px;left:14px;background:rgba(20,32,43,.85);color:#fff;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.1em;padding:6px 10px;border-radius:4px;text-transform:uppercase">{{ $p->category }}</span>
+                                @endif
+                            </div>
+                            @if ($p->location)
+                                <div style="font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8b98a2;text-transform:uppercase;margin-bottom:8px"> {{$p->category ?  $p->category : '' }} | {{ $p->location }}</div>
+                            @endif
+                            <h3 style="font:600 21px/1.25 'Space Grotesk',sans-serif;color:#14202b;margin:0">{{ $p->title }}</h3>
+                        </a>
+                    @endforeach
+                </div>
+            @else
+                <div style="text-align:center;padding:60px 20px;border:1px dashed #d5dde3;border-radius:12px">
+                    <div style="font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#8b98a2;text-transform:uppercase">Featured projects coming soon.</div>
+                </div>
+            @endif
         </div>
     </section>
 
