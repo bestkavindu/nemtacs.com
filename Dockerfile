@@ -51,8 +51,7 @@ RUN { \
         echo 'opcache.validate_timestamps=0'; \
     } > /usr/local/etc/php/conf.d/opcache-recommended.ini
 
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public /var/www/html/database \
-    && chmod 775 /var/www/html/database
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public
 
 EXPOSE 80
 EXPOSE 8080
