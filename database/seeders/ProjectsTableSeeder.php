@@ -16,9 +16,8 @@ class ProjectsTableSeeder extends Seeder
     {
         
 
-        \DB::table('projects')->delete();
-        
-        \DB::table('projects')->insert(array (
+        // Insert-only: never wipe or overwrite projects added through the admin panel.
+        \DB::table('projects')->upsert(array (
             0 => 
             array (
                 'id' => 1,
@@ -75,8 +74,12 @@ class ProjectsTableSeeder extends Seeder
                 'created_at' => '2026-07-24 10:19:56',
                 'updated_at' => '2026-07-24 10:26:40',
             ),
-        ));
-        
-        
+        ), ['slug'], []);
+
+        if (\DB::connection()->getDriverName() === 'pgsql') {
+            \DB::statement(
+                "SELECT setval(pg_get_serial_sequence('projects', 'id'), GREATEST((SELECT MAX(id) FROM projects), 1))"
+            );
+        }
     }
 }

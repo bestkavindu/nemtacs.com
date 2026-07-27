@@ -16,9 +16,8 @@ class UsersTableSeeder extends Seeder
     {
         
 
-        \DB::table('users')->delete();
-        
-        \DB::table('users')->insert(array (
+        // Insert-only: never wipe or overwrite live accounts when re-seeding.
+        \DB::table('users')->upsert(array (
             0 => 
             array (
                 'id' => 1,
@@ -33,8 +32,23 @@ class UsersTableSeeder extends Seeder
                 'created_at' => '2026-07-23 17:59:35',
                 'updated_at' => '2026-07-23 17:59:35',
             ),
-        ));
-        
-        
+        ), ['email'], []);
+
+        $this->syncSequence('users');
+    }
+
+    /**
+     * Explicit ids leave the Postgres identity sequence behind, so the next
+     * application insert would collide on the primary key.
+     */
+    protected function syncSequence(string $table): void
+    {
+        if (\DB::connection()->getDriverName() !== 'pgsql') {
+            return;
+        }
+
+        \DB::statement(
+            "SELECT setval(pg_get_serial_sequence('{$table}', 'id'), GREATEST((SELECT MAX(id) FROM {$table}), 1))"
+        );
     }
 }
