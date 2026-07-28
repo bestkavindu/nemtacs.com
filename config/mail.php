@@ -115,4 +115,17 @@ return [
         'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'Laravel')),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Enquiry Recipient
+    |--------------------------------------------------------------------------
+    |
+    | Where contact-form enquiries are delivered. Enquiries are always stored
+    | in the database, so mail is a notification channel rather than the
+    | system of record.
+    |
+    */
+
+    'enquiries_to' => env('MAIL_ENQUIRIES_TO', 'info@nemtpower.com'),
+
 ];

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')->name('home');
 
+Route::livewire('contact', 'pages::contact')->name('contact');
+
 Route::livewire('projects', 'pages::projects.index')->name('projects.index');
 Route::livewire('projects/{project:slug}', 'pages::projects.show')->name('projects.show');
 

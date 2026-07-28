@@ -99,7 +99,7 @@
                     <a href="{{ route('projects.index') }}" style="color:#e1141c">Projects</a>
                     <a href="{{ url('/') }}#brands" class="navlink">Brands</a>
                 </nav>
-                <a href="{{ url('/') }}#contact" class="btn-red" style="padding:11px 22px;border-radius:5px;font:600 14px 'IBM Plex Sans',sans-serif">Contact Us</a>
+                <a href="{{ route('contact') }}" class="btn-red" style="padding:11px 22px;border-radius:5px;font:600 14px 'IBM Plex Sans',sans-serif">Contact Us</a>
             </div>
         </div>
     </header>
@@ -128,7 +128,7 @@
                     <a href="{{ url('/') }}#services" class="footer-link" style="color:#9fb0bd">Services</a>
                     <a href="{{ route('projects.index') }}" class="footer-link" style="color:#9fb0bd">Projects</a>
                     <a href="{{ url('/') }}#brands" class="footer-link" style="color:#9fb0bd">Our Brands</a>
-                    <a href="{{ url('/') }}#contact" class="footer-link" style="color:#9fb0bd">Contact</a>
+                    <a href="{{ route('contact') }}" class="footer-link" style="color:#9fb0bd">Contact</a>
                 </div>
             </div>
             <div>

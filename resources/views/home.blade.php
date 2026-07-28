@@ -105,7 +105,7 @@
                     <a href="/projects" wire:navigate class="navlink">Projects</a>
                     <a href="#brands" wire:navigate class="navlink">Brands</a>
                 </nav>
-                <a href="#contact" class="btn-red" style="padding:11px 22px;border-radius:5px;font:600 14px 'IBM Plex Sans',sans-serif">Contact Us</a>
+                <a href="{{ route('contact') }}" class="btn-red" style="padding:11px 22px;border-radius:5px;font:600 14px 'IBM Plex Sans',sans-serif">Contact Us</a>
             </div>
         </div>
     </header>
@@ -132,7 +132,7 @@
                 <h1 style="font:600 60px/1.03 'Space Grotesk',sans-serif;letter-spacing:-.025em;color:#fff;margin:24px 0 20px;text-wrap:balance">Power systems,<br>engineered to spec.</h1>
                 <p style="font:400 18px/1.6 'IBM Plex Sans',sans-serif;color:#c6d1da;max-width:520px;margin:0 0 34px">We design, assemble and commission type-tested LV switchboards and industrial automation systems for factories and commercial buildings across Sri Lanka.</p>
                 <div style="display:flex;gap:14px;align-items:center;margin-bottom:36px;flex-wrap:wrap">
-                    <a href="#contact" class="btn-red" style="pointer-events:auto;padding:15px 26px;border-radius:5px;font:600 15px 'IBM Plex Sans',sans-serif;display:inline-flex;align-items:center;gap:9px">Contact Us <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+                    <a href="{{ route('contact') }}" class="btn-red" style="pointer-events:auto;padding:15px 26px;border-radius:5px;font:600 15px 'IBM Plex Sans',sans-serif;display:inline-flex;align-items:center;gap:9px">Contact Us <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
                     <a href="#services" class="btn-ghost" style="pointer-events:auto;padding:14px 24px;border-radius:5px;font:600 15px 'IBM Plex Sans',sans-serif">Our Services</a>
                 </div>
                 <div style="font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.04em;color:rgba(255,255,255,.66)">12+ YEARS · 250+ PROJECTS · TYPE-TESTED TO 4000A</div>
@@ -248,7 +248,7 @@
                         <div style="display:flex;justify-content:space-between;align-items:flex-start"><div style="width:52px;height:52px;border-radius:11px;background:#fdecec;color:#e1141c;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#e1141c" stroke-width="1.7">{!! $svc[2] !!}</svg></div><span style="font:600 12px 'IBM Plex Mono',monospace;color:#c3ccd3">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}</span></div>
                         <h3 style="font:600 20px 'Space Grotesk',sans-serif;color:#14202b;margin:22px 0 10px">{!! $svc[0] !!}</h3>
                         <p style="font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:#5a6772;margin:0 0 18px">{!! $svc[1] !!}</p>
-                        <a href="#contact" class="svc-link" style="font:600 13px 'IBM Plex Sans',sans-serif;color:#e1141c;display:inline-flex;align-items:center;gap:6px">Learn more →</a>
+                        <a href="{{ route('contact') }}" class="svc-link" style="font:600 13px 'IBM Plex Sans',sans-serif;color:#e1141c;display:inline-flex;align-items:center;gap:6px">Learn more →</a>
                     </div>
                 @endforeach
             </div>
@@ -384,27 +384,17 @@
                 </div>
             </div>
             <div style="background:#fff;border:1px solid #e6ebef;border-radius:14px;padding:40px;box-shadow:0 20px 44px rgba(14,26,36,.10)">
-                <form id="enquiry-form">
-                    <div id="enquiry-fields">
-                        <h3 style="font:600 22px 'Space Grotesk',sans-serif;color:#14202b;margin:0 0 6px">Request a quote</h3>
-                        <p style="font:400 14px 'IBM Plex Sans',sans-serif;color:#8b98a2;margin:0 0 26px">We usually respond within one business day.</p>
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
-                            <div><label style="display:block;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#8b98a2;text-transform:uppercase;margin-bottom:7px">Name</label><input type="text" name="name" placeholder="Your name" class="field" style="width:100%;border:1px solid #d5dde3;border-radius:7px;padding:12px 14px;font:400 15px 'IBM Plex Sans',sans-serif;color:#14202b;background:#fff;outline:none"></div>
-                            <div><label style="display:block;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#8b98a2;text-transform:uppercase;margin-bottom:7px">Company</label><input type="text" name="company" placeholder="Company" class="field" style="width:100%;border:1px solid #d5dde3;border-radius:7px;padding:12px 14px;font:400 15px 'IBM Plex Sans',sans-serif;color:#14202b;background:#fff;outline:none"></div>
+                <h3 style="font:600 22px 'Space Grotesk',sans-serif;color:#14202b;margin:0 0 6px">Request a quote</h3>
+                <p style="font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:#5a6772;margin:0 0 28px">Send us your requirement — capacity, timeline and site conditions — and our engineers will come back to you within one business day.</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:30px">
+                    @foreach (['Scoped technical response, not a generic reply','Type-tested switchboards up to 4000A','In-house design, assembly and commissioning'] as $point)
+                        <div style="display:flex;gap:10px;align-items:flex-start;font:400 14.5px/1.5 'IBM Plex Sans',sans-serif;color:#4a5661">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#e1141c" stroke-width="2.4" style="flex-shrink:0;margin-top:2px"><path d="M20 6L9 17l-5-5"></path></svg>{{ $point }}
                         </div>
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
-                            <div><label style="display:block;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#8b98a2;text-transform:uppercase;margin-bottom:7px">Email</label><input type="email" name="email" placeholder="you@company.com" class="field" style="width:100%;border:1px solid #d5dde3;border-radius:7px;padding:12px 14px;font:400 15px 'IBM Plex Sans',sans-serif;color:#14202b;background:#fff;outline:none"></div>
-                            <div><label style="display:block;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#8b98a2;text-transform:uppercase;margin-bottom:7px">Phone</label><input type="tel" name="phone" placeholder="+94 ..." class="field" style="width:100%;border:1px solid #d5dde3;border-radius:7px;padding:12px 14px;font:400 15px 'IBM Plex Sans',sans-serif;color:#14202b;background:#fff;outline:none"></div>
-                        </div>
-                        <div style="margin-bottom:22px"><label style="display:block;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#8b98a2;text-transform:uppercase;margin-bottom:7px">How can we help?</label><textarea name="message" rows="4" placeholder="Tell us about your project, capacity, timeline…" class="field" style="width:100%;border:1px solid #d5dde3;border-radius:7px;padding:12px 14px;font:400 15px/1.5 'IBM Plex Sans',sans-serif;color:#14202b;background:#fff;outline:none;resize:vertical"></textarea></div>
-                        <button type="submit" class="btn-red" style="width:100%;border:none;padding:16px;border-radius:8px;font:600 15px 'IBM Plex Sans',sans-serif;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:9px">Send Enquiry <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
-                    </div>
-                    <div id="enquiry-sent" style="display:none;text-align:center;padding:48px 20px">
-                        <div style="width:64px;height:64px;border-radius:50%;background:#e9f7ef;display:inline-flex;align-items:center;justify-content:center;margin-bottom:22px"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#1a9e5f" stroke-width="2.4"><path d="M20 6L9 17l-5-5"></path></svg></div>
-                        <h3 style="font:600 24px 'Space Grotesk',sans-serif;color:#14202b;margin:0 0 10px">Thank you — enquiry received.</h3>
-                        <p style="font:400 16px/1.6 'IBM Plex Sans',sans-serif;color:#5a6772;margin:0">Our engineers will get back to you within one business day.</p>
-                    </div>
-                </form>
+                    @endforeach
+                </div>
+                <a href="{{ route('contact') }}" class="btn-red" style="width:100%;padding:16px;border-radius:8px;font:600 15px 'IBM Plex Sans',sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:9px">Open the enquiry form <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+                <div style="margin-top:22px;padding-top:22px;border-top:1px solid #eef2f5;font:400 14px/1.6 'IBM Plex Sans',sans-serif;color:#8b98a2">Prefer to talk? Call <a href="tel:+94777890890" style="color:#e1141c;font-weight:600">+94 777 890 890</a> or email <a href="mailto:info@nemtpower.com" style="color:#e1141c;font-weight:600">info@nemtpower.com</a>.</div>
             </div>
         </div>
     </section>
@@ -437,7 +427,7 @@
             <div>
                 <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#fff;text-transform:uppercase;margin-bottom:20px">Useful Links</div>
                 <div style="display:flex;flex-direction:column;gap:12px;font:400 14.5px 'IBM Plex Sans',sans-serif">
-                    @foreach (['Home' => '#home','About Us' => '#about','Services' => '#services','Projects' => '#projects','Our Brands' => '#brands','Contact' => '#contact'] as $label => $href)
+                    @foreach (['Home' => '#home','About Us' => '#about','Services' => '#services','Projects' => '#projects','Our Brands' => '#brands','Contact' => route('contact')] as $label => $href)
                         <a href="{{ $href }}" class="footer-link" style="color:#9fb0bd">{{ $label }}</a>
                     @endforeach
                 </div>
@@ -511,13 +501,6 @@
         }, 60);
     }
 
-    // ---- Enquiry form (front-end only, mirrors design behaviour) ----
-    var form = document.getElementById('enquiry-form');
-    if (form) form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        document.getElementById('enquiry-fields').style.display = 'none';
-        document.getElementById('enquiry-sent').style.display = 'block';
-    });
 })();
 </script>
 </body>
