@@ -201,6 +201,7 @@
                         <div style="display:flex;gap:11px;align-items:flex-start"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#e1141c" stroke-width="2.4" style="flex-shrink:0;margin-top:1px"><path d="M20 6L9 17l-5-5"></path></svg><span style="font:500 15px/1.4 'IBM Plex Sans',sans-serif;color:#2d3842">{{ $point }}</span></div>
                     @endforeach
                 </div>
+                <a href="{{ route('about') }}" class="btn-outline" style="margin-top:32px;padding:14px 26px;border-radius:5px;font:600 15px 'IBM Plex Sans',sans-serif;display:inline-flex;align-items:center;gap:9px">More About Us <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#14202b" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
             </div>
         </div>
     </section>

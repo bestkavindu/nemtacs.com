@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__lean-ctx__ctx_tree",
+      "PowerShell($php=\"C:\\\\Users\\\\Admin\\\\.config\\\\herd\\\\bin\\\\php.bat\"; & $php \"C:\\\\Projects\\\\Laravel\\\\nemtacs.com\\\\_probe.php\")",
+      "PowerShell(Remove-Item -LiteralPath \"C:\\\\Projects\\\\Laravel\\\\nemtacs.com\\\\_probe.php\" -Force; $php=\"C:\\\\Users\\\\Admin\\\\.config\\\\herd\\\\bin\\\\php.bat\"; & $php artisan view:clear | Out-Null; Write-Output \"cleaned\")",
+      "PowerShell($php=\"C:\\\\Users\\\\Admin\\\\.config\\\\herd\\\\bin\\\\php.bat\"; & $php \"C:\\\\Projects\\\\Laravel\\\\nemtacs.com\\\\artisan\" view:clear)",
+      "PowerShell(php artisan view:clear)",
+      "PowerShell($php = \\(Get-Command php -ErrorAction SilentlyContinue\\).Source; if\\(-not $php\\){ foreach\\($p in @\\(\"$env:USERPROFILE\\\\.config\\\\herd\\\\bin\\\\php.bat\",\"C:\\\\Herd\\\\bin\\\\php.bat\",\"C:\\\\laragon\\\\bin\\\\php\\\\php.exe\"\\)\\){ if\\(Test-Path $p\\){$php=$p;break} } }; if\\($php\\){ Write-Output \"PHP: $php\"; & $php artisan route:list 2>&1 | Select-String -Pattern \"home|register|login|password.request\" } else { Write-Output \"php not found\" })",
+      "PowerShell($php=\"C:\\\\Users\\\\Admin\\\\.config\\\\herd\\\\bin\\\\php.bat\"; & $php artisan view:clear 2>&1 | Select-Object -Last 2; & $php -r \"try{ \\\\Illuminate\\\\Support\\\\Facades\\\\Blade::compileString\\(file_get_contents\\('resources/views/pages/auth/login.blade.php'\\)\\); echo 'login OK'; }catch\\(\\\\Throwable \\\\$e\\){ echo 'ERR:'.\\\\$e->getMessage\\(\\); }\" 2>&1)"
+    ]
+  }
+}
