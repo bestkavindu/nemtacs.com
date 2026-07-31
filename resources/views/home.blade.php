@@ -351,11 +351,22 @@
             <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#e1141c;display:inline-flex;align-items:center;gap:10px"><span style="width:26px;height:2px;background:#e1141c"></span>Switchgear partners</div>
             <h2 style="font:600 40px/1.1 'Space Grotesk',sans-serif;letter-spacing:-.02em;color:#14202b;margin:18px 0 12px;text-wrap:balance">We build with world-reputed brands.</h2>
             <p style="font:400 17px/1.65 'IBM Plex Sans',sans-serif;color:#4a5661;margin:0 auto 48px;max-width:560px">We use world-reputed brands &amp; accessories for our switchboards — for performance you can rely on.</p>
-            @php $brands = ['Schneider Electric','Siemens','Phoenix Contact','Grässlin','Socomec','Your brand']; @endphp
+            @php
+                $brands = [
+                    ['name' => 'Schneider Electric', 'file' => 'schneider.png'],
+                    ['name' => 'Siemens', 'file' => 'siemens.jpg'],
+                    ['name' => 'Phoenix Contact', 'file' => 'phoenix.jpg'],
+                    ['name' => 'Grässlin', 'file' => 'grasslin.jpg'],
+                    ['name' => 'Socomec', 'file' => 'socomec.jpg'],
+                    ['name' => 'Eaton', 'file' => 'eaton.jpg'],
+                    ['name' => 'Broyce', 'file' => 'broyce.jpg'],
+                    ['name' => 'Teresaki', 'file' => 'teresaki.jpg'],
+                ];
+            @endphp
             <div style="overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)">
                 <div data-marquee style="display:flex;width:max-content;animation-duration:40s">
                     @foreach (array_merge($brands, $brands) as $b)
-                        <div class="ph" style="flex:0 0 240px;height:96px;background:#f5f7f9;border:1px solid #eaeef1;border-radius:10px;overflow:hidden;margin-right:20px"><span>{{ $b }}</span></div>
+                        <div class="ph" style="flex:0 0 240px;height:96px;background:#f5f7f9;border:1px solid #eaeef1;border-radius:10px;overflow:hidden;margin-right:20px;display:flex;align-items:center;justify-content:center;padding:16px"><img src="{{ asset('brands/'.$b['file']) }}" alt="{{ $b['name'] }}" style="max-width:100%;max-height:100%;object-fit:contain"></div>
                     @endforeach
                 </div>
             </div>
