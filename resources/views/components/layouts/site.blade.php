@@ -95,7 +95,7 @@
                 <nav class="desktop-nav" style="display:flex;gap:26px;font:500 15px 'IBM Plex Sans',sans-serif">
                     <a href="{{ url('/') }}#home" @class(['navlink' => !request()->routeIs('home')]) @style(['color:#e1141c' => request()->routeIs('home')])>Home</a>
                     <a href="{{ route('about') }}" @class(['navlink' => !request()->routeIs('about')]) @style(['color:#e1141c' => request()->routeIs('about')]) wire:navigate>About</a>
-                    <a href="{{ url('/') }}#services" class="navlink">Services</a>
+                    <a href="{{ route('services') }}" @class(['navlink' => !request()->routeIs('services')]) @style(['color:#e1141c' => request()->routeIs('services')]) wire:navigate>Services</a>
                     <a href="{{ route('projects.index') }}" @class(['navlink' => !request()->routeIs('projects.*')]) @style(['color:#e1141c' => request()->routeIs('projects.*')]) wire:navigate>Projects</a>
                     <a href="{{ url('/') }}#brands" class="navlink">Brands</a>
                 </nav>
@@ -125,7 +125,7 @@
                 <div style="display:flex;flex-direction:column;gap:12px;font:400 14.5px 'IBM Plex Sans',sans-serif">
                     <a href="{{ url('/') }}#home" class="footer-link" style="color:#9fb0bd">Home</a>
                     <a href="{{ route('about') }}" class="footer-link" style="color:#9fb0bd" wire:navigate>About Us</a>
-                    <a href="{{ url('/') }}#services" class="footer-link" style="color:#9fb0bd">Services</a>
+                    <a href="{{ route('services') }}" class="footer-link" style="color:#9fb0bd" wire:navigate>Services</a>
                     <a href="{{ route('projects.index') }}" class="footer-link" style="color:#9fb0bd">Projects</a>
                     <a href="{{ url('/') }}#brands" class="footer-link" style="color:#9fb0bd">Our Brands</a>
                     <a href="{{ route('contact') }}" class="footer-link" style="color:#9fb0bd">Contact</a>
@@ -134,8 +134,15 @@
             <div>
                 <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#fff;text-transform:uppercase;margin-bottom:20px">Our Services</div>
                 <div style="display:flex;flex-direction:column;gap:12px;font:400 14.5px 'IBM Plex Sans',sans-serif">
-                    @foreach (['Power Switchboards','Industrial Automation','MEP Project Consultations','Energy Audits','Generator Repair & Services','Industrial Wiring & Drawings'] as $svc)
-                        <a href="{{ url('/') }}#services" class="footer-link" style="color:#9fb0bd">{{ $svc }}</a>
+                    @foreach ([
+                        'Power Switchboards' => null,
+                        'Industrial Automation' => 'industrial-automation',
+                        'MEP Project Consultations' => 'mep-consultations',
+                        'Energy Audits' => 'energy-audits',
+                        'Generator Repair & Services' => 'generator-repair',
+                        'Industrial Wiring & Drawings' => 'industrial-wiring',
+                    ] as $svc => $slug)
+                        <a href="{{ route('services') }}{{ $slug ? '#'.$slug : '' }}" class="footer-link" style="color:#9fb0bd" wire:navigate>{{ $svc }}</a>
                     @endforeach
                 </div>
             </div>

@@ -134,10 +134,13 @@
     {{-- ===================== SERVICES ===================== --}}
     <section id="services" style="background:#f5f7f9;padding:100px 0;border-top:1px solid #eaeef1">
         <div style="max-width:1600px;margin:0 auto;padding:0 40px">
-            <div style="max-width:640px;margin-bottom:48px">
-                <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#e1141c;display:flex;align-items:center;gap:10px"><span style="width:26px;height:2px;background:#e1141c"></span>What we do</div>
-                <h2 style="font:600 40px/1.1 'Space Grotesk',sans-serif;letter-spacing:-.02em;color:#14202b;margin:18px 0 14px;text-wrap:balance">Engineered power services, end to end.</h2>
-                <p style="font:400 17px/1.65 'IBM Plex Sans',sans-serif;color:#4a5661;margin:0">From design and drawings to assembly, installation and lifetime support — one engineering team across the whole project.</p>
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:24px;flex-wrap:wrap">
+                <div style="max-width:640px">
+                    <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#e1141c;display:flex;align-items:center;gap:10px"><span style="width:26px;height:2px;background:#e1141c"></span>What we do</div>
+                    <h2 style="font:600 40px/1.1 'Space Grotesk',sans-serif;letter-spacing:-.02em;color:#14202b;margin:18px 0 14px;text-wrap:balance">Engineered power services, end to end.</h2>
+                    <p style="font:400 17px/1.65 'IBM Plex Sans',sans-serif;color:#4a5661;margin:0">From design and drawings to assembly, installation and lifetime support — one engineering team across the whole project.</p>
+                </div>
+                <a href="{{ route('services') }}" class="btn-outline" style="font:600 14px 'IBM Plex Sans',sans-serif;padding:12px 22px;border-radius:5px;white-space:nowrap" wire:navigate>View all services →</a>
             </div>
 
             {{-- featured core service --}}
@@ -160,12 +163,12 @@
             {{-- service grid --}}
             @php
                 $services = [
-                    ['Industrial Automation','PLC & control systems for reliable, efficient and safe plant operation.','<rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M9 9h6M9 12h6M9 15h3"></path><circle cx="7" cy="9" r=".6" fill="#e1141c"></circle>'],
-                    ['MEP Project Consultations','Mechanical, electrical &amp; plumbing consultation for new builds and upgrades.','<path d="M3 21h18"></path><path d="M5 21V8l7-4 7 4v13"></path><path d="M9 21v-6h6v6"></path>'],
-                    ['Energy Audits','Identify losses and cut consumption with a measured, data-led audit.','<path d="M4 15a8 8 0 0116 0"></path><path d="M12 15l4-4"></path><circle cx="12" cy="15" r="1.4" fill="#e1141c" stroke="none"></circle>'],
-                    ['Generator Repair &amp; Services','Installation, servicing and breakdown support for standby generators.','<rect x="3" y="6" width="18" height="12" rx="2"></rect><path d="M13 9l-3 4h3l-1 3"></path>'],
-                    ['Industrial Wiring','All kinds of industrial wiring, executed safely and to standard.','<path d="M9 3v6M15 3v6M8 9h8v3a4 4 0 01-8 0z"></path><path d="M12 16v5"></path>'],
-                    ['Engineering Drawings','Accurate schematics and layout drawings, produced in-house.','<path d="M12 3l9 5-9 5-9-5z"></path><path d="M3 8v8l9 5 9-5V8"></path>'],
+                    ['Industrial Automation','PLC & control systems for reliable, efficient and safe plant operation.','<rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M9 9h6M9 12h6M9 15h3"></path><circle cx="7" cy="9" r=".6" fill="#e1141c"></circle>','industrial-automation'],
+                    ['MEP Project Consultations','Mechanical, electrical &amp; plumbing consultation for new builds and upgrades.','<path d="M3 21h18"></path><path d="M5 21V8l7-4 7 4v13"></path><path d="M9 21v-6h6v6"></path>','mep-consultations'],
+                    ['Energy Audits','Identify losses and cut consumption with a measured, data-led audit.','<path d="M4 15a8 8 0 0116 0"></path><path d="M12 15l4-4"></path><circle cx="12" cy="15" r="1.4" fill="#e1141c" stroke="none"></circle>','energy-audits'],
+                    ['Generator Repair &amp; Services','Installation, servicing and breakdown support for standby generators.','<rect x="3" y="6" width="18" height="12" rx="2"></rect><path d="M13 9l-3 4h3l-1 3"></path>','generator-repair'],
+                    ['Industrial Wiring','All kinds of industrial wiring, executed safely and to standard.','<path d="M9 3v6M15 3v6M8 9h8v3a4 4 0 01-8 0z"></path><path d="M12 16v5"></path>','industrial-wiring'],
+                    ['Engineering Drawings','Accurate schematics and layout drawings, produced in-house.','<path d="M12 3l9 5-9 5-9-5z"></path><path d="M3 8v8l9 5 9-5V8"></path>','engineering-drawings'],
                 ];
             @endphp
             <div class="svc-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
@@ -174,7 +177,7 @@
                         <div style="display:flex;justify-content:space-between;align-items:flex-start"><div style="width:52px;height:52px;border-radius:11px;background:#fdecec;color:#e1141c;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#e1141c" stroke-width="1.7">{!! $svc[2] !!}</svg></div><span style="font:600 12px 'IBM Plex Mono',monospace;color:#c3ccd3">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}</span></div>
                         <h3 style="font:600 20px 'Space Grotesk',sans-serif;color:#14202b;margin:22px 0 10px">{!! $svc[0] !!}</h3>
                         <p style="font:400 15px/1.6 'IBM Plex Sans',sans-serif;color:#5a6772;margin:0 0 18px">{!! $svc[1] !!}</p>
-                        <a href="{{ route('contact') }}" class="svc-link" style="font:600 13px 'IBM Plex Sans',sans-serif;color:#e1141c;display:inline-flex;align-items:center;gap:6px">Learn more →</a>
+                        <a href="{{ route('services') }}#{{ $svc[3] }}" class="svc-link" style="font:600 13px 'IBM Plex Sans',sans-serif;color:#e1141c;display:inline-flex;align-items:center;gap:6px" wire:navigate>Learn more →</a>
                     </div>
                 @endforeach
             </div>
