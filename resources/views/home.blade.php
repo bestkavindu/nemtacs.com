@@ -281,16 +281,6 @@
                     </div>
                 @endforeach
             </div>
-            <div style="border-top:1px solid #e2e8ec;padding-top:36px">
-                <div style="font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#8b98a2;text-transform:uppercase;text-align:center;margin-bottom:26px">Trusted by clients across sectors</div>
-                <div style="overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)">
-                    <div data-marquee style="display:flex;width:max-content;animation-duration:36s">
-                        @foreach (array_merge(range(1,5), range(1,5)) as $c)
-                            <div class="ph" style="flex:0 0 220px;height:64px;border:1px solid #e6ebef;border-radius:8px;overflow:hidden;margin-right:20px"><span>Client logo</span></div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
