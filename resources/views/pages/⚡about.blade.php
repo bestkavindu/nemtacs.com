@@ -12,7 +12,7 @@ new #[Layout('components.layouts.site')] #[Title('About Us')] class extends Comp
     {{-- ===================== BREADCRUMB ===================== --}}
     <div style="background:#0b141d;border-bottom:1px solid rgba(255,255,255,.08)">
         <div style="max-width:1600px;margin:0 auto;padding:16px 40px;font:500 13px 'IBM Plex Sans',sans-serif;color:#7e8f9c">
-            <a href="{{ url('/') }}" style="color:#7e8f9c">Home</a>
+            <a href="{{ url('/') }}" class="tap-link" style="color:#7e8f9c">Home</a>
             <span style="margin:0 8px;opacity:.5">/</span>
             <span style="color:#fff">About Us</span>
         </div>
@@ -23,7 +23,7 @@ new #[Layout('components.layouts.site')] #[Title('About Us')] class extends Comp
         <div style="position:absolute;inset:0;z-index:0">
             <img class="cover" style="position:absolute;inset:0;opacity:.16;filter:grayscale(.3)" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1900&q=80" alt="" aria-hidden="true">
         </div>
-        <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,14,20,.97),rgba(8,14,20,.82))"></div>
+        <div class="hero-overlay" style="position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,14,20,.97),rgba(8,14,20,.82))"></div>
         <div style="position:relative;z-index:2;max-width:1600px;margin:0 auto;padding:0 40px">
             <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#ff5b62;display:flex;align-items:center;gap:10px"><span style="width:26px;height:2px;background:#ff5b62"></span>Who we are</div>
             <h1 style="font:600 clamp(38px,4.6vw,52px)/1.06 'Space Grotesk',sans-serif;letter-spacing:-.025em;color:#fff;margin:20px 0 20px;max-width:720px;text-wrap:balance">Engineering reliable power, since 2013.</h1>
@@ -39,7 +39,7 @@ new #[Layout('components.layouts.site')] #[Title('About Us')] class extends Comp
                 <div style="position:relative;height:300px;border-radius:10px;overflow:hidden;box-shadow:0 12px 30px rgba(14,26,36,.12)">
                     <img class="cover" style="position:absolute;inset:0" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Industrial control panel" loading="lazy">
                 </div>
-                <div style="display:grid;grid-template-columns:1.4fr .9fr;gap:22px;align-items:stretch">
+                <div class="media-pair" style="display:grid;grid-template-columns:1.4fr .9fr;gap:22px;align-items:stretch">
                     <div style="position:relative;height:220px;border-radius:10px;overflow:hidden;box-shadow:0 12px 30px rgba(14,26,36,.12)">
                         <img class="cover" style="position:absolute;inset:0" src="https://images.unsplash.com/photo-1553406830-ef2513450d76?auto=format&fit=crop&w=1000&q=80" alt="Switchboard assembly floor" loading="lazy">
                     </div>

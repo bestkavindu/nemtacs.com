@@ -44,7 +44,7 @@ new #[Layout('components.layouts.site')] #[Title('Projects')] class extends Comp
         <div style="position:absolute;inset:0;z-index:0">
             <img class="cover" style="position:absolute;inset:0;opacity:.28" src="https://images.unsplash.com/photo-1576446470246-499c738d1c8e?auto=format&fit=crop&w=1900&q=80" alt="" loading="lazy">
         </div>
-        <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,14,20,.95),rgba(8,14,20,.7))"></div>
+        <div class="hero-overlay" style="position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,14,20,.95),rgba(8,14,20,.7))"></div>
         <div style="position:relative;z-index:2;max-width:1600px;margin:0 auto;padding:88px clamp(40px,6vw,72px)">
             <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#ff5b62;display:flex;align-items:center;gap:10px"><span style="width:26px;height:2px;background:#ff5b62"></span>Selected work</div>
             <h1 style="font:600 54px/1.05 'Space Grotesk',sans-serif;letter-spacing:-.025em;color:#fff;margin:22px 0 16px;text-wrap:balance">Projects delivered across Sri Lanka.</h1>

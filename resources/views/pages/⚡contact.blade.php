@@ -85,16 +85,20 @@ new #[Layout('components.layouts.site')] #[Title('Contact Us')] class extends Co
             .field-error{border-color:#e1141c !important}
             .err{font:400 12.5px 'IBM Plex Sans',sans-serif;color:#e1141c;margin-top:6px}
             @media (max-width:760px){
-                .contact-grid{grid-template-columns:1fr !important;gap:40px !important}
-                .field-row{grid-template-columns:1fr !important}
-                .contact-hero h1{font-size:38px !important}
+                .contact-grid{grid-template-columns:1fr !important;gap:36px !important}
+                .field-row{grid-template-columns:1fr !important;gap:14px !important}
+                .contact-hero h1{font-size:34px !important;line-height:1.12 !important}
+                /* horizontal overlay leaves mobile copy over the bright side */
+                .contact-hero .hero-overlay{background:linear-gradient(180deg,rgba(8,14,20,.82),rgba(8,14,20,.96)) !important}
+                .field{min-height:48px}
+                textarea.field{min-height:132px}
             }
         </style>
     @endpush
 
     {{-- ===================== PAGE HERO ===================== --}}
     <section class="contact-hero" style="background:#0b141d;position:relative;overflow:hidden">
-        <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,14,20,.96),rgba(8,14,20,.72))"></div>
+        <div class="hero-overlay" style="position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,14,20,.96),rgba(8,14,20,.72))"></div>
         <div style="position:relative;z-index:2;max-width:1600px;margin:0 auto;padding:88px clamp(40px,6vw,72px)">
             <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#ff5b62;display:flex;align-items:center;gap:10px"><span style="width:26px;height:2px;background:#ff5b62"></span>Get in touch</div>
             <h1 style="font:600 54px/1.05 'Space Grotesk',sans-serif;letter-spacing:-.025em;color:#fff;margin:22px 0 16px;text-wrap:balance">Let's discuss your power project.</h1>
@@ -116,11 +120,11 @@ new #[Layout('components.layouts.site')] #[Title('Contact Us')] class extends Co
                     </div>
                     <div style="background:#fff;border:1px solid #e6ebef;border-radius:10px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start">
                         <div style="width:44px;height:44px;border-radius:10px;background:#fdecec;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#e1141c" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></div>
-                        <div><div style="font:600 14px 'IBM Plex Sans',sans-serif;color:#14202b;margin-bottom:4px">Email Us</div><a href="mailto:info@nemtpower.com" style="font:400 14px 'IBM Plex Sans',sans-serif;color:#5a6772">info@nemtpower.com</a></div>
+                        <div><div style="font:600 14px 'IBM Plex Sans',sans-serif;color:#14202b;margin-bottom:4px">Email Us</div><a href="mailto:info@nemtpower.com" class="tap-link" style="font:400 14px 'IBM Plex Sans',sans-serif;color:#5a6772">info@nemtpower.com</a></div>
                     </div>
                     <div style="background:#fff;border:1px solid #e6ebef;border-radius:10px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start">
                         <div style="width:44px;height:44px;border-radius:10px;background:#fdecec;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#e1141c" stroke-width="1.8"><path d="M5 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"></path></svg></div>
-                        <div><div style="font:600 14px 'IBM Plex Sans',sans-serif;color:#14202b;margin-bottom:4px">Call Us</div><div style="font:400 14px/1.55 'IBM Plex Sans',sans-serif;color:#5a6772">Hotline: <a href="tel:+94777890890" style="color:#5a6772">+94 777 890 890</a><br>Hotline: +94 114 836 836 · Tel: +94 112 913 131</div></div>
+                        <div><div style="font:600 14px 'IBM Plex Sans',sans-serif;color:#14202b;margin-bottom:4px">Call Us</div><div style="font:400 14px/1.55 'IBM Plex Sans',sans-serif;color:#5a6772">Hotline: <a href="tel:+94777890890" class="tap-link" style="color:#5a6772">+94 777 890 890</a><br>Hotline: +94 114 836 836 · Tel: +94 112 913 131</div></div>
                     </div>
                     <div style="background:#fff;border:1px solid #e6ebef;border-radius:10px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start">
                         <div style="width:44px;height:44px;border-radius:10px;background:#fdecec;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#e1141c" stroke-width="1.8"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg></div>

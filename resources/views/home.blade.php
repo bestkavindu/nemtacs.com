@@ -24,13 +24,34 @@
         @media (prefers-reduced-motion:reduce){
             [data-marquee]{animation:none}
         }
-        @media (max-width:960px){
-            .stat-strip{grid-template-columns:1fr !important}
-            .svc-grid{grid-template-columns:1fr 1fr !important}
-            .featured-svc{grid-template-columns:1fr !important}
+
+        /* Layout-wide breakpoints live in components/layouts/site.blade.php.
+           These are the hero-specific mobile fixes. */
+        @media (max-width:760px){
+            /* the desktop overlay is a left-to-right gradient, which leaves
+               mobile copy sitting over the bright side of the photo */
+            .hero-overlay{background:linear-gradient(180deg,rgba(8,14,20,.66) 0%,rgba(8,14,20,.84) 48%,rgba(8,14,20,.95) 100%) !important}
+            .hero-inner{padding:36px 20px 200px !important}
+            .hero-inner h1{font-size:34px !important;line-height:1.12 !important;margin:18px 0 16px !important}
+            .hero-inner p{font-size:16px !important}
+            .hero-inner .btn-red,.hero-inner .btn-ghost{flex:1 1 150px}
+            .hero-eyebrow,.hero-meta{font-size:11px !important}
+
+            /* the capability card sat bottom-right, on top of the slider
+               controls — stack it above them, full width */
+            .hero-cap{left:20px !important;right:20px !important;bottom:92px !important;padding:14px 18px !important}
+            .hero-cap .cap-num{font-size:26px !important}
+            .hero-ctrls{left:20px !important;bottom:28px !important}
+
+            /* slider controls need a 44px hit area — the dots stay 8px tall
+               visually and get theirs from an invisible overlay */
+            .hero-ctrl{width:44px !important;height:44px !important}
+            #hero-dots [data-dot]{position:relative}
+            #hero-dots [data-dot]::after{content:'';position:absolute;top:-18px;bottom:-18px;left:-5px;right:-5px}
         }
-        @media (max-width:560px){
-            .svc-grid{grid-template-columns:1fr !important}
+        @media (max-width:380px){
+            .hero-inner{padding-bottom:206px !important}
+            .hero-inner h1{font-size:30px !important}
         }
     </style>
     @endpush
@@ -51,23 +72,23 @@
                     <div style="flex:0 0 100%;position:relative"><img class="cover" style="position:absolute;inset:0" src="{{ $img }}" alt="Power engineering" loading="lazy"></div>
                 @endforeach
             </div>
-            <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(8,14,20,.94) 0%,rgba(8,14,20,.82) 32%,rgba(8,14,20,.5) 62%,rgba(8,14,20,.2) 100%)"></div>
-            <div style="position:relative;z-index:2;pointer-events:none;max-width:1600px;margin:0 auto;min-height:calc(100vh - 128px);display:flex;flex-direction:column;justify-content:center;padding:64px clamp(40px,6vw,72px)">
-                <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#ff5b62;display:flex;align-items:center;gap:10px"><span style="width:26px;height:2px;background:#ff5b62"></span>Switchboards · Automation · Since 2013</div>
+            <div class="hero-overlay" style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(8,14,20,.94) 0%,rgba(8,14,20,.82) 32%,rgba(8,14,20,.5) 62%,rgba(8,14,20,.2) 100%)"></div>
+            <div class="hero-inner" style="position:relative;z-index:2;pointer-events:none;max-width:1600px;margin:0 auto;min-height:calc(100vh - 128px);display:flex;flex-direction:column;justify-content:center;padding:64px clamp(40px,6vw,72px)">
+                <div class="hero-eyebrow" style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#ff5b62;display:flex;align-items:center;gap:10px"><span style="width:26px;height:2px;background:#ff5b62"></span>Switchboards · Automation · Since 2013</div>
                 <h1 style="font:600 60px/1.03 'Space Grotesk',sans-serif;letter-spacing:-.025em;color:#fff;margin:24px 0 20px;text-wrap:balance">Power systems,<br>engineered to spec.</h1>
                 <p style="font:400 18px/1.6 'IBM Plex Sans',sans-serif;color:#c6d1da;max-width:520px;margin:0 0 34px">We design, assemble and commission type-tested LV switchboards and industrial automation systems for factories and commercial buildings across Sri Lanka.</p>
                 <div style="display:flex;gap:14px;align-items:center;margin-bottom:36px;flex-wrap:wrap">
                     <a href="{{ route('contact') }}" class="btn-red" style="pointer-events:auto;padding:15px 26px;border-radius:5px;font:600 15px 'IBM Plex Sans',sans-serif;display:inline-flex;align-items:center;gap:9px">Contact Us <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
                     <a href="#services" class="btn-ghost" style="pointer-events:auto;padding:14px 24px;border-radius:5px;font:600 15px 'IBM Plex Sans',sans-serif">Our Services</a>
                 </div>
-                <div style="font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.04em;color:rgba(255,255,255,.66)">12+ YEARS · 250+ PROJECTS · TYPE-TESTED TO 4000A</div>
+                <div class="hero-meta" style="font:500 13px 'IBM Plex Mono',monospace;letter-spacing:.04em;color:rgba(255,255,255,.66)">12+ YEARS · 250+ PROJECTS · TYPE-TESTED TO 4000A</div>
             </div>
-            <div style="position:absolute;right:clamp(24px,4vw,64px);bottom:40px;z-index:3;pointer-events:none;background:#fff;border-top:3px solid #e1141c;border-radius:6px;box-shadow:0 16px 34px rgba(8,14,20,.4);padding:16px 22px">
+            <div class="hero-cap" style="position:absolute;right:clamp(24px,4vw,64px);bottom:40px;z-index:3;pointer-events:none;background:#fff;border-top:3px solid #e1141c;border-radius:6px;box-shadow:0 16px 34px rgba(8,14,20,.4);padding:16px 22px">
                 <div style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#e1141c;text-transform:uppercase">Capability</div>
-                <div style="font:600 32px/1 'Space Grotesk',sans-serif;color:#14202b;margin:6px 0 4px">4000A</div>
+                <div class="cap-num" style="font:600 32px/1 'Space Grotesk',sans-serif;color:#14202b;margin:6px 0 4px">4000A</div>
                 <div style="font:400 12px 'IBM Plex Sans',sans-serif;color:#6a7681">Type-tested LV switchboards</div>
             </div>
-            <div style="position:absolute;left:clamp(40px,6vw,72px);bottom:40px;z-index:3;display:flex;align-items:center;gap:16px">
+            <div class="hero-ctrls" style="position:absolute;left:clamp(40px,6vw,72px);bottom:40px;z-index:3;display:flex;align-items:center;gap:16px">
                 <button id="hero-prev" aria-label="Previous slide" class="hero-ctrl" style="width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.1);backdrop-filter:blur(6px);cursor:pointer;display:flex;align-items:center;justify-content:center">
                     <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#fff" stroke-width="2.4"><path d="M15 6l-6 6 6 6"></path></svg>
                 </button>
@@ -105,7 +126,7 @@
                 <div style="position:relative;height:300px;border-radius:10px;overflow:hidden;box-shadow:0 12px 30px rgba(14,26,36,.12)">
                     <img class="cover" style="position:absolute;inset:0" src="https://images.unsplash.com/photo-1775989233801-012eca66ab26?auto=format&fit=crop&w=1200&q=80" alt="Control systems / automation" loading="lazy">
                 </div>
-                <div style="display:grid;grid-template-columns:1.4fr .9fr;gap:22px;align-items:stretch">
+                <div class="media-pair" style="display:grid;grid-template-columns:1.4fr .9fr;gap:22px;align-items:stretch">
                     <div style="position:relative;height:220px;border-radius:10px;overflow:hidden;box-shadow:0 12px 30px rgba(14,26,36,.12)">
                         <img class="cover" style="position:absolute;inset:0" src="https://images.unsplash.com/photo-1645639417590-32e8778b2141?auto=format&fit=crop&w=1000&q=80" alt="Switchboard floor" loading="lazy">
                     </div>
@@ -121,7 +142,7 @@
                 <h2 style="font:600 40px/1.1 'Space Grotesk',sans-serif;letter-spacing:-.02em;color:#14202b;margin:18px 0 22px;text-wrap:balance">State-of-the-art engineering solutions.</h2>
                 <p style="font:400 16.5px/1.7 'IBM Plex Sans',sans-serif;color:#4a5661;margin:0 0 18px">Nemt Power (Pvt) Ltd is a well-established engineering solutions company in Sri Lanka. Founded in 2013 to close the market gap for reliable, quality industrial automation systems and electrical power switchboards, we were incorporated as a private limited company in 2021.</p>
                 <p style="font:400 16.5px/1.7 'IBM Plex Sans',sans-serif;color:#4a5661;margin:0 0 28px">Today we are a leading assembler of power switchboards and provider of industrial automation systems, delivering high-quality, reliable power systems type-tested up to 4000A — backed by a rigorous quality management system on the assembly floor.</p>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px 26px">
+                <div class="check-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px 26px">
                     @foreach (['World-reputed switchgear brands','Type-tested to 4000A','24/7 breakdown response','In-house engineering & drawings'] as $point)
                         <div style="display:flex;gap:11px;align-items:flex-start"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#e1141c" stroke-width="2.4" style="flex-shrink:0;margin-top:1px"><path d="M20 6L9 17l-5-5"></path></svg><span style="font:500 15px/1.4 'IBM Plex Sans',sans-serif;color:#2d3842">{{ $point }}</span></div>
                     @endforeach
@@ -134,7 +155,7 @@
     {{-- ===================== SERVICES ===================== --}}
     <section id="services" style="background:#f5f7f9;padding:100px 0;border-top:1px solid #eaeef1">
         <div style="max-width:1600px;margin:0 auto;padding:0 40px">
-            <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:24px;flex-wrap:wrap">
+            <div class="sec-head" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;gap:24px;flex-wrap:wrap">
                 <div style="max-width:640px">
                     <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#e1141c;display:flex;align-items:center;gap:10px"><span style="width:26px;height:2px;background:#e1141c"></span>What we do</div>
                     <h2 style="font:600 40px/1.1 'Space Grotesk',sans-serif;letter-spacing:-.02em;color:#14202b;margin:18px 0 14px;text-wrap:balance">Engineered power services, end to end.</h2>
@@ -155,7 +176,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div style="position:relative;min-height:320px">
+                <div class="featured-img" style="position:relative;min-height:320px">
                     <img class="cover" style="position:absolute;inset:0" src="https://images.unsplash.com/photo-1566417110090-6b15a06ec800?auto=format&fit=crop&w=1400&q=80" alt="Switchboard / panel" loading="lazy">
                 </div>
             </div>
@@ -187,7 +208,7 @@
     {{-- ===================== PROJECTS ===================== --}}
     <section id="projects" style="background:#fff;padding:100px 0">
         <div style="max-width:1600px;margin:0 auto;padding:0 40px">
-            <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:44px;gap:24px;flex-wrap:wrap">
+            <div class="sec-head" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:44px;gap:24px;flex-wrap:wrap">
                 <div style="max-width:600px">
                     <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#e1141c;display:flex;align-items:center;gap:10px"><span style="width:26px;height:2px;background:#e1141c"></span>Selected work</div>
                     <h2 style="font:600 40px/1.1 'Space Grotesk',sans-serif;letter-spacing:-.02em;color:#14202b;margin:18px 0 0;text-wrap:balance">Projects delivered across Sri Lanka.</h2>
@@ -315,7 +336,7 @@
                     </div>
                     <div style="background:#fff;border:1px solid #e6ebef;border-radius:10px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start">
                         <div style="width:44px;height:44px;border-radius:10px;background:#fdecec;color:#e1141c;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#e1141c" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></div>
-                        <div><div style="font:600 14px 'IBM Plex Sans',sans-serif;color:#14202b;margin-bottom:4px">Email Us</div><a href="mailto:info@nemtpower.com" style="font:400 14px 'IBM Plex Sans',sans-serif;color:#5a6772">info@nemtpower.com</a></div>
+                        <div><div style="font:600 14px 'IBM Plex Sans',sans-serif;color:#14202b;margin-bottom:4px">Email Us</div><a href="mailto:info@nemtpower.com" class="tap-link" style="font:400 14px 'IBM Plex Sans',sans-serif;color:#5a6772">info@nemtpower.com</a></div>
                     </div>
                     <div style="background:#fff;border:1px solid #e6ebef;border-radius:10px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start">
                         <div style="width:44px;height:44px;border-radius:10px;background:#fdecec;color:#e1141c;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#e1141c" stroke-width="1.8"><path d="M5 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"></path></svg></div>

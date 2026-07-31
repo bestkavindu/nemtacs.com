@@ -50,7 +50,7 @@ new #[Layout('components.layouts.site')] class extends Component {
     {{-- ===================== BREADCRUMB ===================== --}}
     <div style="background:#0b141d;border-bottom:1px solid rgba(255,255,255,.08)">
         <div style="max-width:1600px;margin:0 auto;padding:16px 40px;font:500 13px 'IBM Plex Sans',sans-serif;color:#7e8f9c">
-            <a href="{{ url('/') }}" style="color:#7e8f9c">Home</a>
+            <a href="{{ url('/') }}" class="tap-link" style="color:#7e8f9c">Home</a>
             <span style="margin:0 8px;opacity:.5">/</span>
             <a href="{{ route('projects.index') }}" wire:navigate style="color:#7e8f9c">Projects</a>
             <span style="margin:0 8px;opacity:.5">/</span>
@@ -62,7 +62,7 @@ new #[Layout('components.layouts.site')] class extends Component {
     <section style="background:#0b141d;position:relative;overflow:hidden;padding:64px 0 96px">
         @if ($project->image)
             <div style="position:absolute;inset:0;z-index:0"><img class="cover" style="position:absolute;inset:0;opacity:.14;filter:grayscale(.3)" src="{{ Storage::disk('public')->url($project->image) }}" alt="" aria-hidden="true"></div>
-            <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,14,20,.97),rgba(8,14,20,.82))"></div>
+            <div class="hero-overlay" style="position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,14,20,.97),rgba(8,14,20,.82))"></div>
         @endif
         <div class="grid-2" style="position:relative;z-index:2;max-width:1600px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center">
             <div>

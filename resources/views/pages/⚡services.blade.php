@@ -12,7 +12,7 @@ new #[Layout('components.layouts.site')] #[Title('Services')] class extends Comp
     {{-- ===================== BREADCRUMB ===================== --}}
     <div style="background:#0b141d;border-bottom:1px solid rgba(255,255,255,.08)">
         <div style="max-width:1600px;margin:0 auto;padding:16px 40px;font:500 13px 'IBM Plex Sans',sans-serif;color:#7e8f9c">
-            <a href="{{ url('/') }}" style="color:#7e8f9c">Home</a>
+            <a href="{{ url('/') }}" class="tap-link" style="color:#7e8f9c">Home</a>
             <span style="margin:0 8px;opacity:.5">/</span>
             <span style="color:#fff">Services</span>
         </div>
@@ -23,7 +23,7 @@ new #[Layout('components.layouts.site')] #[Title('Services')] class extends Comp
         <div style="position:absolute;inset:0;z-index:0">
             <img class="cover" style="position:absolute;inset:0;opacity:.16;filter:grayscale(.3)" src="https://images.unsplash.com/photo-1566417110090-6b15a06ec800?auto=format&fit=crop&w=1900&q=80" alt="" aria-hidden="true">
         </div>
-        <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,14,20,.97),rgba(8,14,20,.82))"></div>
+        <div class="hero-overlay" style="position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(8,14,20,.97),rgba(8,14,20,.82))"></div>
         <div style="position:relative;z-index:2;max-width:1600px;margin:0 auto;padding:0 40px">
             <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#ff5b62;display:flex;align-items:center;gap:10px"><span style="width:26px;height:2px;background:#ff5b62"></span>What we do</div>
             <h1 style="font:600 clamp(38px,4.6vw,52px)/1.06 'Space Grotesk',sans-serif;letter-spacing:-.025em;color:#fff;margin:20px 0 20px;max-width:760px;text-wrap:balance">Power, automation &amp; engineering services, end to end.</h1>
@@ -95,10 +95,10 @@ new #[Layout('components.layouts.site')] #[Title('Services')] class extends Comp
     @foreach ($serviceDetails as $i => $svc)
         <section id="{{ $svc['slug'] }}" style="background:{{ $i % 2 === 0 ? '#fff' : '#f5f7f9' }};padding:88px 0;{{ $i % 2 !== 0 ? 'border-top:1px solid #eaeef1;border-bottom:1px solid #eaeef1' : '' }}">
             <div class="grid-2" style="max-width:1600px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
-                <div style="{{ $i % 2 !== 0 ? 'order:2' : '' }};position:relative;height:340px;border-radius:12px;overflow:hidden;box-shadow:0 14px 32px rgba(14,26,36,.12)">
+                <div class="svc-media" style="{{ $i % 2 !== 0 ? 'order:2' : '' }};position:relative;height:340px;border-radius:12px;overflow:hidden;box-shadow:0 14px 32px rgba(14,26,36,.12)">
                     <img class="cover" style="position:absolute;inset:0" src="{{ $svc['img'] }}" alt="{{ $svc['alt'] }}" loading="lazy">
                 </div>
-                <div style="{{ $i % 2 !== 0 ? 'order:1' : '' }}">
+                <div class="svc-body" style="{{ $i % 2 !== 0 ? 'order:1' : '' }}">
                     <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#e1141c">{{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }} &mdash; Service</div>
                     <h2 style="font:600 34px/1.15 'Space Grotesk',sans-serif;letter-spacing:-.02em;color:#14202b;margin:16px 0 14px;text-wrap:balance">{!! $svc['title'] !!}</h2>
                     <p style="font:500 16px/1.6 'IBM Plex Sans',sans-serif;color:#e1141c;margin:0 0 16px">{!! $svc['summary'] !!}</p>
