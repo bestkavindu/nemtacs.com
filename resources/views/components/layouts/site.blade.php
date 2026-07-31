@@ -94,7 +94,7 @@
             <div style="display:flex;align-items:center;gap:32px">
                 <nav class="desktop-nav" style="display:flex;gap:26px;font:500 15px 'IBM Plex Sans',sans-serif">
                     <a href="{{ url('/') }}#home" class="navlink">Home</a>
-                    <a href="{{ url('/') }}#about" class="navlink">About</a>
+                    <a href="{{ route('about') }}" class="navlink" wire:navigate>About</a>
                     <a href="{{ url('/') }}#services" class="navlink">Services</a>
                     <a href="{{ route('projects.index') }}" style="color:#e1141c">Projects</a>
                     <a href="{{ url('/') }}#brands" class="navlink">Brands</a>
@@ -124,7 +124,7 @@
                 <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#fff;text-transform:uppercase;margin-bottom:20px">Useful Links</div>
                 <div style="display:flex;flex-direction:column;gap:12px;font:400 14.5px 'IBM Plex Sans',sans-serif">
                     <a href="{{ url('/') }}#home" class="footer-link" style="color:#9fb0bd">Home</a>
-                    <a href="{{ url('/') }}#about" class="footer-link" style="color:#9fb0bd">About Us</a>
+                    <a href="{{ route('about') }}" class="footer-link" style="color:#9fb0bd" wire:navigate>About Us</a>
                     <a href="{{ url('/') }}#services" class="footer-link" style="color:#9fb0bd">Services</a>
                     <a href="{{ route('projects.index') }}" class="footer-link" style="color:#9fb0bd">Projects</a>
                     <a href="{{ url('/') }}#brands" class="footer-link" style="color:#9fb0bd">Our Brands</a>

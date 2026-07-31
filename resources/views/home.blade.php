@@ -100,7 +100,7 @@
             <div style="display:flex;align-items:center;gap:32px">
                 <nav class="desktop-nav" style="display:flex;gap:26px;font:500 15px 'IBM Plex Sans',sans-serif">
                     <a href="#home" style="color:#e1141c">Home</a>
-                    <a href="#about" class="navlink" wire:navigate>About</a>
+                    <a href="{{ route('about') }}" class="navlink" wire:navigate>About</a>
                     <a href="#services" wire:navigate class="navlink">Services</a>
                     <a href="/projects" wire:navigate class="navlink">Projects</a>
                     <a href="#brands" wire:navigate class="navlink">Brands</a>
@@ -428,8 +428,8 @@
             <div>
                 <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#fff;text-transform:uppercase;margin-bottom:20px">Useful Links</div>
                 <div style="display:flex;flex-direction:column;gap:12px;font:400 14.5px 'IBM Plex Sans',sans-serif">
-                    @foreach (['Home' => '#home','About Us' => '#about','Services' => '#services','Projects' => '#projects','Our Brands' => '#brands','Contact' => route('contact')] as $label => $href)
-                        <a href="{{ $href }}" class="footer-link" style="color:#9fb0bd">{{ $label }}</a>
+                    @foreach (['Home' => '#home','About Us' => route('about'),'Services' => '#services','Projects' => '#projects','Our Brands' => '#brands','Contact' => route('contact')] as $label => $href)
+                        <a href="{{ $href }}" @if($label === 'About Us') wire:navigate @endif class="footer-link" style="color:#9fb0bd">{{ $label }}</a>
                     @endforeach
                 </div>
             </div>
