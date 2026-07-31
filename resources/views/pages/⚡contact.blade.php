@@ -198,13 +198,10 @@ new #[Layout('components.layouts.site')] #[Title('Contact Us')] class extends Co
     </section>
 
     {{-- ===================== MAP BAND ===================== --}}
-    <section style="position:relative;height:380px;background:#e5eaee;background-image:linear-gradient(#d7dee4 1px,transparent 1px),linear-gradient(90deg,#d7dee4 1px,transparent 1px);background-size:44px 44px;display:flex;align-items:center;justify-content:center">
-        <div style="text-align:center">
-            <div style="display:inline-flex;flex-direction:column;align-items:center;gap:12px">
-                <svg viewBox="0 0 24 24" width="40" height="40" fill="#e1141c" stroke="none"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"></path></svg>
-                <div style="font:600 15px 'IBM Plex Sans',sans-serif;color:#14202b">NEMT Group of Companies</div>
-                <div style="font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#8b98a2">◳ MAP · embed Google Maps here · Mahara, Kadawatha</div>
-            </div>
-        </div>
+    <section style="position:relative;height:380px">
+        <iframe
+            src="https://www.google.com/maps?q=NEMT+GROUP+OF+COMPANIES,+6.9924974,79.938935&z=17&output=embed"
+            width="100%" height="380" style="border:0;display:block" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" title="NEMT Group of Companies location"></iframe>
     </section>
 </div>
