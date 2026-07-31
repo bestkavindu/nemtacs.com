@@ -93,10 +93,10 @@
             </a>
             <div style="display:flex;align-items:center;gap:32px">
                 <nav class="desktop-nav" style="display:flex;gap:26px;font:500 15px 'IBM Plex Sans',sans-serif">
-                    <a href="{{ url('/') }}#home" class="navlink">Home</a>
-                    <a href="{{ route('about') }}" class="navlink" wire:navigate>About</a>
+                    <a href="{{ url('/') }}#home" @class(['navlink' => !request()->routeIs('home')]) @style(['color:#e1141c' => request()->routeIs('home')])>Home</a>
+                    <a href="{{ route('about') }}" @class(['navlink' => !request()->routeIs('about')]) @style(['color:#e1141c' => request()->routeIs('about')]) wire:navigate>About</a>
                     <a href="{{ url('/') }}#services" class="navlink">Services</a>
-                    <a href="{{ route('projects.index') }}" style="color:#e1141c">Projects</a>
+                    <a href="{{ route('projects.index') }}" @class(['navlink' => !request()->routeIs('projects.*')]) @style(['color:#e1141c' => request()->routeIs('projects.*')]) wire:navigate>Projects</a>
                     <a href="{{ url('/') }}#brands" class="navlink">Brands</a>
                 </nav>
                 <a href="{{ route('contact') }}" class="btn-red" style="padding:11px 22px;border-radius:5px;font:600 14px 'IBM Plex Sans',sans-serif">Contact Us</a>

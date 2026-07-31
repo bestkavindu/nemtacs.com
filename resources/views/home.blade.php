@@ -1,43 +1,13 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Nemt Power (Pvt) Ltd — Enhanced Power Solutions</title>
-    <meta name="description" content="Nemt Power designs, assembles and commissions type-tested LV switchboards and industrial automation systems across Sri Lanka. Type-tested up to 4000A.">
+<x-layouts.site>
 
-    <link rel="icon" href="/favicon.png" type="image/png">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+    @push('styles')
     <style>
-        *{box-sizing:border-box}
-        body{margin:0;background:#fff;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#14202b;-webkit-font-smoothing:antialiased}
-        a{color:#1b63a8;text-decoration:none}
-
-        /* reveal on scroll */
-        [data-reveal]{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
-        [data-reveal][data-shown]{opacity:1;transform:none}
-
-        /* marquee */
+        /* home-page-only additions on top of the shared layout styles */
         @keyframes nemt-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
         [data-marquee]{animation:nemt-scroll linear infinite;will-change:transform}
         [data-marquee]:hover{animation-play-state:paused}
 
-        /* placeholder image tiles */
-        .ph{background:linear-gradient(135deg,#e9eef2,#f5f7f9);display:flex;align-items:center;justify-content:center;text-align:center}
-        .ph span{font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#9aa7b1;padding:0 10px;text-transform:uppercase}
-        img.cover{width:100%;height:100%;object-fit:cover;display:block}
-
-        /* hover states (converted from design style-hover) */
-        a:hover{color:#e1141c}
-        .navlink{color:#3b4750}.navlink:hover{color:#e1141c}
-        .btn-red{background:#e1141c;color:#fff}.btn-red:hover{background:#c10e15;color:#fff}
         .btn-ghost{border:1.5px solid rgba(255,255,255,.45);color:#fff}.btn-ghost:hover{border-color:#fff;color:#fff}
-        .btn-outline{border:1.5px solid #cdd6dd;color:#14202b}.btn-outline:hover{border-color:#14202b;color:#14202b}
-        .util-social:hover{background:#fff;color:#e1141c}
         .svc-card{transition:border-color .25s,box-shadow .25s,transform .25s}
         .svc-card:hover{border-color:#cdd6dd;box-shadow:0 14px 30px rgba(14,26,36,.10);transform:translateY(-3px)}
         .prj-card{color:inherit;transition:transform .25s}
@@ -49,66 +19,21 @@
         .prj-card:hover img.cover{transform:scale(1.06)}
         .svc-link{transition:gap .2s,color .2s}.svc-link:hover{gap:10px;color:#c10e15}
         .hero-ctrl{transition:background .2s}.hero-ctrl:hover{background:rgba(255,255,255,.22)}
-        .footer-link:hover{color:#ff5960}
-        .footer-social:hover{background:#e1141c;color:#fff}
         .field:focus{border-color:#e1141c}
 
         @media (prefers-reduced-motion:reduce){
-            [data-reveal]{opacity:1 !important;transform:none !important;transition:none !important}
             [data-marquee]{animation:none}
         }
         @media (max-width:960px){
-            .grid-2,.grid-3,.grid-4,.stat-strip,.footer-grid{grid-template-columns:1fr !important}
+            .stat-strip{grid-template-columns:1fr !important}
             .svc-grid{grid-template-columns:1fr 1fr !important}
             .featured-svc{grid-template-columns:1fr !important}
-            .desktop-nav{display:none !important}
         }
         @media (max-width:560px){
             .svc-grid{grid-template-columns:1fr !important}
-            h1{font-size:40px !important}
         }
     </style>
-</head>
-<body>
-<div style="width:100%;overflow-x:hidden">
-
-    {{-- ===================== UTILITY BAR ===================== --}}
-    <div style="background:#e1141c;color:#fff">
-        <div style="max-width:1600px;margin:0 auto;padding:9px 40px;display:flex;justify-content:space-between;align-items:center;gap:16px;font:500 12.5px/1 'IBM Plex Mono',monospace;letter-spacing:.01em;flex-wrap:wrap">
-            <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap">
-                <a href="mailto:info@nemtpower.com" style="color:#fff;display:inline-flex;gap:8px;align-items:center"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>info@nemtpower.com</a>
-                <a href="tel:+94777890890" style="color:#fff;display:inline-flex;gap:8px;align-items:center"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2"><path d="M5 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"></path></svg>+94 777 890 890</a>
-                <span style="opacity:.85">+94 11 291 3131</span>
-            </div>
-            <div style="display:flex;gap:7px">
-                @foreach (['X','f','ig','sk','in'] as $s)
-                    <a href="#" class="util-social" style="color:#fff;width:22px;height:22px;border:1px solid rgba(255,255,255,.55);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font:600 8px 'IBM Plex Mono',monospace;transition:background .2s,color .2s">{{ $s }}</a>
-                @endforeach
-            </div>
-        </div>
-    </div>
-
-    {{-- ===================== HEADER ===================== --}}
-    <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid #eef2f5">
-        <div style="max-width:1600px;margin:0 auto;padding:16px 40px;display:flex;justify-content:space-between;align-items:center">
-            <a href="#home" style="display:flex;align-items:center;gap:9px;line-height:1">
-                <span style="display:block">
-                    <span style="font:700 27px/1 'Space Grotesk',sans-serif;letter-spacing:-.01em"><span style="color:#e1141c">N</span><span style="color:#14202b">emt</span><span style="color:#1b63a8">power</span><span style="color:#e1141c">.</span></span>
-                    <span style="display:block;font:500 8px 'IBM Plex Mono',monospace;letter-spacing:.24em;color:#8b98a2;text-transform:uppercase;margin-top:4px">Enhanced Power Solutions · Since 2013</span>
-                </span>
-            </a>
-            <div style="display:flex;align-items:center;gap:32px">
-                <nav class="desktop-nav" style="display:flex;gap:26px;font:500 15px 'IBM Plex Sans',sans-serif">
-                    <a href="#home" style="color:#e1141c">Home</a>
-                    <a href="{{ route('about') }}" class="navlink" wire:navigate>About</a>
-                    <a href="#services" wire:navigate class="navlink">Services</a>
-                    <a href="/projects" wire:navigate class="navlink">Projects</a>
-                    <a href="#brands" wire:navigate class="navlink">Brands</a>
-                </nav>
-                <a href="{{ route('contact') }}" class="btn-red" style="padding:11px 22px;border-radius:5px;font:600 14px 'IBM Plex Sans',sans-serif">Contact Us</a>
-            </div>
-        </div>
-    </header>
+    @endpush
 
     {{-- ===================== HERO ===================== --}}
     <section id="home" style="background:#0b141d">
@@ -201,7 +126,7 @@
                         <div style="display:flex;gap:11px;align-items:flex-start"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#e1141c" stroke-width="2.4" style="flex-shrink:0;margin-top:1px"><path d="M20 6L9 17l-5-5"></path></svg><span style="font:500 15px/1.4 'IBM Plex Sans',sans-serif;color:#2d3842">{{ $point }}</span></div>
                     @endforeach
                 </div>
-                <a href="{{ route('about') }}" class="btn-outline" style="margin-top:32px;padding:14px 26px;border-radius:5px;font:600 15px 'IBM Plex Sans',sans-serif;display:inline-flex;align-items:center;gap:9px">More About Us <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#14202b" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+                <a href="{{ route('about') }}" class="btn-outline" style="margin-top:32px;padding:14px 26px;border-radius:5px;font:600 15px 'IBM Plex Sans',sans-serif;display:inline-flex;align-items:center;gap:9px" wire:navigate>More About Us <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#14202b" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
             </div>
         </div>
     </section>
@@ -264,7 +189,7 @@
                     <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#e1141c;display:flex;align-items:center;gap:10px"><span style="width:26px;height:2px;background:#e1141c"></span>Selected work</div>
                     <h2 style="font:600 40px/1.1 'Space Grotesk',sans-serif;letter-spacing:-.02em;color:#14202b;margin:18px 0 0;text-wrap:balance">Projects delivered across Sri Lanka.</h2>
                 </div>
-                <a href="{{ route('projects.index') }}" class="btn-outline" style="font:600 14px 'IBM Plex Sans',sans-serif;padding:12px 22px;border-radius:5px;white-space:nowrap">View all projects →</a>
+                <a href="{{ route('projects.index') }}" class="btn-outline" style="font:600 14px 'IBM Plex Sans',sans-serif;padding:12px 22px;border-radius:5px;white-space:nowrap" wire:navigate>View all projects →</a>
             </div>
             @php
                 $projects = \App\Models\Project::query()
@@ -277,7 +202,7 @@
             @if ($projects->isNotEmpty())
                 <div class="grid-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px">
                     @foreach ($projects as $p)
-                        <a href="{{ route('projects.show', $p) }}" class="prj-card" style="display:block;color:inherit">
+                        <a href="{{ route('projects.show', $p) }}" class="prj-card" style="display:block;color:inherit" wire:navigate>
                             <div class="imgwrap" style="position:relative;height:250px;border-radius:11px;overflow:hidden;margin-bottom:18px;background:#f5f7f9">
                                 @if ($p->image)
                                     <img class="cover" style="position:absolute;inset:0" src="{{ \Storage::disk('public')->url($p->image) }}" alt="{{ $p->title }}" loading="lazy">
@@ -405,104 +330,65 @@
                         </div>
                     @endforeach
                 </div>
-                <a href="{{ route('contact') }}" class="btn-red" style="width:100%;padding:16px;border-radius:8px;font:600 15px 'IBM Plex Sans',sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:9px">Open the enquiry form <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+                <a href="{{ route('contact') }}" class="btn-red" style="width:100%;padding:16px;border-radius:8px;font:600 15px 'IBM Plex Sans',sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:9px" wire:navigate>Open the enquiry form <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
                 <div style="margin-top:22px;padding-top:22px;border-top:1px solid #eef2f5;font:400 14px/1.6 'IBM Plex Sans',sans-serif;color:#8b98a2">Prefer to talk? Call <a href="tel:+94777890890" style="color:#e1141c;font-weight:600">+94 777 890 890</a> or email <a href="mailto:info@nemtpower.com" style="color:#e1141c;font-weight:600">info@nemtpower.com</a>.</div>
             </div>
         </div>
     </section>
 
-    {{-- ===================== FOOTER ===================== --}}
-    <footer style="background:#0e1a24;color:#b6c4cf;padding:72px 0 0">
-        <div class="footer-grid" style="max-width:1600px;margin:0 auto;padding:0 40px 56px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:56px">
-            <div>
-                <div style="font:700 26px/1 'Space Grotesk',sans-serif;letter-spacing:-.01em;margin-bottom:6px"><span style="color:#ff3b43">N</span><span style="color:#fff">emt</span><span style="color:#4d9be0">power</span><span style="color:#ff3b43">.</span></div>
-                <div style="font:500 8px 'IBM Plex Mono',monospace;letter-spacing:.24em;color:#6f8496;text-transform:uppercase;margin-bottom:22px">Enhanced Power Solutions · Since 2013</div>
-                <div style="font:400 14px/1.7 'IBM Plex Sans',sans-serif;color:#9fb0bd;margin-bottom:18px">NEMT POWER (PVT) LTD.<br>349/1A, Dalupitiya Road,<br>Mahara, Kadawatha, Sri Lanka.</div>
-                <div style="font:400 13.5px/1.8 'IBM Plex Sans',sans-serif;color:#9fb0bd">Hotline: <span style="color:#fff">+94 777 890 890</span><br>Phone: <span style="color:#fff">+94 112 913 131</span><br>Email: <a href="mailto:info@nemtpower.com" class="footer-link" style="color:#4d9be0">info@nemtpower.com</a></div>
-                <div style="display:flex;gap:8px;margin-top:22px">
-                    @foreach (['X','f','ig','sk','in'] as $s)
-                        <a href="#" class="footer-social" style="width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,.08);color:#c7d4dd;display:inline-flex;align-items:center;justify-content:center;font:600 10px 'IBM Plex Mono',monospace;transition:background .2s,color .2s">{{ $s }}</a>
-                    @endforeach
-                </div>
-            </div>
-            <div>
-                <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#fff;text-transform:uppercase;margin-bottom:20px">Useful Links</div>
-                <div style="display:flex;flex-direction:column;gap:12px;font:400 14.5px 'IBM Plex Sans',sans-serif">
-                    @foreach (['Home' => '#home','About Us' => route('about'),'Services' => '#services','Projects' => '#projects','Our Brands' => '#brands','Contact' => route('contact')] as $label => $href)
-                        <a href="{{ $href }}" @if($label === 'About Us') wire:navigate @endif class="footer-link" style="color:#9fb0bd">{{ $label }}</a>
-                    @endforeach
-                </div>
-            </div>
-            <div>
-                <div style="font:600 12px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#fff;text-transform:uppercase;margin-bottom:20px">Our Services</div>
-                <div style="display:flex;flex-direction:column;gap:12px;font:400 14.5px 'IBM Plex Sans',sans-serif">
-                    @foreach (['Power Switchboards','Industrial Automation','MEP Project Consultations','Energy Audits','Generator Repair & Services','Industrial Wiring & Drawings'] as $svc)
-                        <a href="#services" class="footer-link" style="color:#9fb0bd">{{ $svc }}</a>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-        <div style="border-top:1px solid rgba(255,255,255,.1)">
-            <div style="max-width:1600px;margin:0 auto;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font:400 13px 'IBM Plex Sans',sans-serif;color:#7e8f9c">
-                <div>© {{ date('Y') }} <span style="color:#fff">Nemt Power (Pvt) Ltd</span>. All Rights Reserved.</div>
-                <div style="font:500 11px 'IBM Plex Mono',monospace;letter-spacing:.08em">ENHANCED POWER SOLUTIONS</div>
-            </div>
-        </div>
-    </footer>
+    @push('scripts')
+    <script>
+    (function () {
+        // ---- Hero carousel ----
+        var track = document.getElementById('hero-track');
+        var dots = Array.prototype.slice.call(document.querySelectorAll('#hero-dots [data-dot]'));
+        var COUNT = dots.length;
+        var idx = 0, timer;
 
-</div>
-
-<script>
-(function () {
-    // ---- Hero carousel ----
-    var track = document.getElementById('hero-track');
-    var dots = Array.prototype.slice.call(document.querySelectorAll('#hero-dots [data-dot]'));
-    var COUNT = dots.length;
-    var idx = 0, timer;
-
-    function render() {
-        track.style.transform = 'translateX(-' + (idx * 100) + '%)';
-        dots.forEach(function (d, i) {
-            d.style.width = i === idx ? '26px' : '8px';
-            d.style.background = i === idx ? '#e1141c' : 'rgba(255,255,255,.5)';
-        });
-    }
-    function go(i) { idx = (i % COUNT + COUNT) % COUNT; render(); start(); }
-    function start() { clearInterval(timer); timer = setInterval(function () { go(idx + 1); }, 5500); }
-
-    dots.forEach(function (d, i) { d.addEventListener('click', function () { go(i); }); });
-    var prev = document.getElementById('hero-prev'), next = document.getElementById('hero-next');
-    if (prev) prev.addEventListener('click', function () { go(idx - 1); });
-    if (next) next.addEventListener('click', function () { go(idx + 1); });
-    render(); start();
-
-    // ---- Reveal on scroll ----
-    if ('IntersectionObserver' in window) {
-        setTimeout(function () {
-            var secs = Array.prototype.slice.call(document.querySelectorAll('section')).filter(function (s) { return s.id !== 'home'; });
-            var targets = [];
-            secs.forEach(function (sec) {
-                var inner = sec.querySelector(':scope > div');
-                if (!inner) return;
-                var kids = Array.prototype.slice.call(inner.children).filter(function (c) { return c.nodeType === 1; });
-                var group = kids.length >= 2 ? kids : [inner];
-                group.forEach(function (el, i) {
-                    el.setAttribute('data-reveal', '');
-                    el.style.transitionDelay = (i * 90) + 'ms';
-                    targets.push(el);
-                });
+        function render() {
+            track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+            dots.forEach(function (d, i) {
+                d.style.width = i === idx ? '26px' : '8px';
+                d.style.background = i === idx ? '#e1141c' : 'rgba(255,255,255,.5)';
             });
-            var io = new IntersectionObserver(function (entries) {
-                entries.forEach(function (e) {
-                    if (e.isIntersecting) e.target.setAttribute('data-shown', '');
-                    else e.target.removeAttribute('data-shown');
-                });
-            }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
-            targets.forEach(function (el) { io.observe(el); });
-        }, 60);
-    }
+        }
+        function go(i) { idx = (i % COUNT + COUNT) % COUNT; render(); start(); }
+        function start() { clearInterval(timer); timer = setInterval(function () { go(idx + 1); }, 5500); }
 
-})();
-</script>
-</body>
-</html>
+        dots.forEach(function (d, i) { d.addEventListener('click', function () { go(i); }); });
+        var prev = document.getElementById('hero-prev'), next = document.getElementById('hero-next');
+        if (prev) prev.addEventListener('click', function () { go(idx - 1); });
+        if (next) next.addEventListener('click', function () { go(idx + 1); });
+        render(); start();
+
+        // ---- Reveal on scroll ----
+        if ('IntersectionObserver' in window) {
+            setTimeout(function () {
+                var secs = Array.prototype.slice.call(document.querySelectorAll('section')).filter(function (s) { return s.id !== 'home'; });
+                var targets = [];
+                secs.forEach(function (sec) {
+                    var inner = sec.querySelector(':scope > div');
+                    if (!inner) return;
+                    var kids = Array.prototype.slice.call(inner.children).filter(function (c) { return c.nodeType === 1; });
+                    var group = kids.length >= 2 ? kids : [inner];
+                    group.forEach(function (el, i) {
+                        el.setAttribute('data-reveal', '');
+                        el.style.transitionDelay = (i * 90) + 'ms';
+                        targets.push(el);
+                    });
+                });
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) e.target.setAttribute('data-shown', '');
+                        else e.target.removeAttribute('data-shown');
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
+                targets.forEach(function (el) { io.observe(el); });
+            }, 60);
+        }
+
+    })();
+    </script>
+    @endpush
+
+</x-layouts.site>
