@@ -75,8 +75,8 @@
                 <span style="opacity:.85">+94 11 291 3131</span>
             </div>
             <div style="display:flex;gap:7px">
-                @foreach (['X','f','ig','sk','in'] as $s)
-                    <a href="#" class="util-social" style="color:#fff;width:22px;height:22px;border:1px solid rgba(255,255,255,.55);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font:600 8px 'IBM Plex Mono',monospace;transition:background .2s,color .2s">{{ $s }}</a>
+                @foreach (['X' => '#', 'f' => 'https://www.facebook.com/nemtpower', 'ig' => '#', 'sk' => '#', 'in' => '#'] as $s => $url)
+                    <a href="{{ $url }}" @if($url !== '#') target="_blank" rel="noopener noreferrer" @endif class="util-social" style="color:#fff;width:22px;height:22px;border:1px solid rgba(255,255,255,.55);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font:600 8px 'IBM Plex Mono',monospace;transition:background .2s,color .2s">{{ $s }}</a>
                 @endforeach
             </div>
         </div>
@@ -115,8 +115,8 @@
                 <div style="font:400 14px/1.7 'IBM Plex Sans',sans-serif;color:#9fb0bd;margin-bottom:18px">NEMT POWER (PVT) LTD.<br>349/1A, Dalupitiya Road,<br>Mahara, Kadawatha, Sri Lanka.</div>
                 <div style="font:400 13.5px/1.8 'IBM Plex Sans',sans-serif;color:#9fb0bd">Hotline: <span style="color:#fff">+94 777 890 890</span><br>Phone: <span style="color:#fff">+94 112 913 131</span><br>Email: <a href="mailto:info@nemtpower.com" class="footer-link" style="color:#4d9be0">info@nemtpower.com</a></div>
                 <div style="display:flex;gap:8px;margin-top:22px">
-                    @foreach (['X','f','ig','sk','in'] as $s)
-                        <a href="#" class="footer-social" style="width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,.08);color:#c7d4dd;display:inline-flex;align-items:center;justify-content:center;font:600 10px 'IBM Plex Mono',monospace;transition:background .2s,color .2s">{{ $s }}</a>
+                    @foreach (['X' => '#', 'f' => 'https://www.facebook.com/nemtpower', 'ig' => '#', 'sk' => '#', 'in' => '#'] as $s => $url)
+                        <a href="{{ $url }}" @if($url !== '#') target="_blank" rel="noopener noreferrer" @endif class="footer-social" style="width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,.08);color:#c7d4dd;display:inline-flex;align-items:center;justify-content:center;font:600 10px 'IBM Plex Mono',monospace;transition:background .2s,color .2s">{{ $s }}</a>
                     @endforeach
                 </div>
             </div>
